@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "background",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "rect1", "ixmap-subgroup": null, "fill": "#d5ffff" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -20037508.342789243906736, 19971868.880408566445112 ], [ 20037508.342789243906736, 19971868.880408566445112 ], [ 20037508.342789243906736, -19971868.880408566445112 ], [ -20037508.342789243906736, -19971868.880408566445112 ], [ -20037508.342789243906736, 19971868.880408566445112 ] ] ] ] } }
+]
+}
