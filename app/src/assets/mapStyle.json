@@ -1,0 +1,100 @@
+{
+    "version": 8,
+    "id": "ixmaps-style-by-spatialnasir@gmail.com",
+    "name": "ixmaps-style",
+    "projection": {"type": "mercator"},
+    "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+    "sources": {
+        "background" : {
+            "type": "geojson",
+            "data": "./geojson/background.geojson"
+        },
+        "altitudes" : {
+            "type": "geojson",
+            "data": "./geojson/altitudes.geojson"
+        },
+        "climate" : {
+            "type": "geojson",
+            "data": "./geojson/climate.geojson"
+        },
+        "lakes" : {
+            "type": "geojson",
+            "data": "./geojson/lakes.geojson"
+        },
+        "political" : {
+            "type": "geojson",
+            "data": "./geojson/political.geojson"
+        },
+        "rivers" : {
+            "type": "geojson",
+            "data": "./geojson/rivers.geojson"
+        },
+        "icecaps":{
+            "type": "geojson",
+            "data": "./geojson/icecaps.geojson"
+        }
+    },
+    "layers": [
+        {
+            "id": "background",
+            "source": "background",
+            "type": "fill",
+            "paint": {
+                "fill-color": ["get", "fill"]
+        }
+    },
+                {
+            "id": "altitudes",
+            "source": "altitudes",
+            "type": "fill",
+            "paint": {
+                "fill-color": ["get", "fill"]
+            }
+        },
+        {
+            "id": "climate",
+            "source": "climate",
+            "type": "fill",
+            "paint": {
+                "fill-color": ["get", "fill"]
+            }
+        },
+        {
+            "id": "lakes",
+            "source": "lakes",
+            "type": "fill",
+            "paint": {
+                "fill-color": ["get", "fill"]
+            }
+        },
+        {
+            "id": "political",
+            "source": "icecaps",
+            "type": "fill",
+            "paint": {
+                "fill-color": ["get", "fill"]
+            }
+        },
+        {
+            "id": "rivers",
+            "source": "rivers",
+            "type": "line",
+            "paint": {
+                "line-color": ["get", "fill"],
+                "line-width": 1
+            }
+        },
+        {
+            "id": "political-names",
+            "source": "political",
+            "type": "symbol",
+            "layout": {
+                "symbol-placement": "point",
+                "text-field": ["get", "id"],
+                "text-font": ["Open Sans Semibold"],
+                "text-size": 16
+            }
+        }
+    
+    ]
+}

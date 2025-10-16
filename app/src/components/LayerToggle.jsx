@@ -1,7 +1,24 @@
-import { Paper, Checkbox, FormControlLabel } from '@mui/material';
+import {
+    Paper,
+    Checkbox,
+    FormControlLabel,
+    Box,
+    RadioGroup,
+    Radio,
+    FormControl,
+    FormLabel
+} from '@mui/material';
 
-const LayerToggle = ({ mapRef, layerIds }) => {
-    const reveredLayerIds = [...layerIds].reverse()
+const LayerToggle = ({ mapRef, layerIds, setMapStyleState }) => {
+    const reversedLayerIds = [...layerIds].reverse()
+
+    const onProjectionChange = (event) => {
+        const projection = event.target.value;
+        setMapStyleState((prevState) => ({
+            ...prevState,
+            projection: { type: projection }
+        }));
+    }
 
     const handleToggle = (event) => {
         const layerId = event.target.id;
@@ -27,7 +44,7 @@ const LayerToggle = ({ mapRef, layerIds }) => {
             border: 'none',
         }}>
             <ul style={{ 'listStyle': 'none', 'margin': 0, 'paddingLeft': '15px' }}>
-                {reveredLayerIds.map((layerId) => (
+                {reversedLayerIds.map((layerId) => (
                     <li key={layerId}>
                         <FormControlLabel
                             control={
@@ -42,6 +59,23 @@ const LayerToggle = ({ mapRef, layerIds }) => {
                     </li>
                 ))}
             </ul>
+            <hr style={{margin: 0}} />
+            <Box sx={{ pl: '15px' }}>
+
+                <FormControl>
+                    <RadioGroup
+                        aria-labelledby="demo-radio-buttons-group-label"
+                        defaultValue="mercator"
+                        name="radio-buttons-group"
+                        onChange={onProjectionChange}
+                    >
+                        <FormControlLabel value="mercator" control={<Radio />} label="Web Mercator" />
+                        <FormControlLabel value="globe" control={<Radio />} label="Globe" />
+                    </RadioGroup>
+                </FormControl>
+
+            </Box>
+
         </Paper>
     )
 }

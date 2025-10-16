@@ -5,15 +5,22 @@ import Map, {
 } from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { Box } from '@mui/material';
-import MapLayer from './MapLayer';
 import { useRef, useState } from 'react';
 import LayerToggle from './LayerToggle';
+import mapStyle from '../assets/mapStyle.json';
 
 export default function MapComponent() {
 
   const mapRef = useRef()
   const [mapLoaded, setMapLoaded] = useState(false);
-  const layerIds = ['background', 'climate', 'icecaps', 'lakes', 'political', 'rivers', 'altitudes'];
+  const [mapStyleState, setMapStyleState] = useState(mapStyle)
+  const layerIds = ['background', 
+    'climate', 'icecaps', 'lakes',
+     'political', 'rivers',
+      'altitudes', 'political-names'];
+    
+
+
 
   return (
     <Box sx={{ width: '100vw', height: '100vh' }}>
@@ -26,15 +33,13 @@ export default function MapComponent() {
         }}
         style={{ width: '100%', height: '100%' }}
         ref={mapRef}
-        onLoad = {() => setMapLoaded(true)}
+        mapStyle = {mapStyleState}
+        onLoad={() => { setMapLoaded(true) }}
       >
-        {mapLoaded && <LayerToggle mapRef={mapRef} layerIds={layerIds} />}
+        {mapLoaded && <LayerToggle mapRef={mapRef} layerIds={layerIds} setMapStyleState={setMapStyleState} />}
         <FullscreenControl position="top-left" />
         <NavigationControl position="top-left" />
         <ScaleControl />
-        {
-          layerIds.map((dataId) => <MapLayer key={dataId} dataID={dataId} />)
-        }
       </Map>
     </Box>
   );
