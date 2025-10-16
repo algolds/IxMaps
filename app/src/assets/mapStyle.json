@@ -3,7 +3,7 @@
     "id": "ixmaps-style-by-spatialnasir@gmail.com",
     "name": "ixmaps-style",
     "projection": {"type": "mercator"},
-    "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+    "glyphs": "https://ixmaps-spatialnasir.netlify.app/map-fonts/{fontstack}/{range}.pbf",
     "sources": {
         "background" : {
             "type": "geojson",
@@ -91,7 +91,7 @@
             "layout": {
                 "symbol-placement": "point",
                 "text-field": ["get", "id"],
-                "text-font": ["Open Sans Semibold"],
+                "text-font": ["Barlow Regular"],
                 "text-size": 16
             }
         }
