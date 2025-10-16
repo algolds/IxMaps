@@ -3,7 +3,7 @@
     "id": "ixmaps-style-by-spatialnasir@gmail.com",
     "name": "ixmaps-style",
     "projection": {"type": "mercator"},
-    "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+    "glyphs": "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
     "sources": {
         "background" : {
             "type": "geojson",
