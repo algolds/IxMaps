@@ -2,99 +2,118 @@
     "version": 8,
     "id": "ixmaps-style-by-spatialnasir@gmail.com",
     "name": "ixmaps-style",
-    "projection": {"type": "mercator"},
-    "glyphs": "https://ixmaps-spatialnasir.netlify.app/map-fonts/{fontstack}/{range}.pbf",
+    "projection": {
+        "type": "mercator"
+    },
+    "glyphs": "http://localhost:5173/map-fonts/{fontstack}/{range}.pbf",
     "sources": {
-        "background" : {
-            "type": "geojson",
-            "data": "./geojson/background.geojson"
-        },
-        "altitudes" : {
-            "type": "geojson",
-            "data": "./geojson/altitudes.geojson"
-        },
-        "climate" : {
-            "type": "geojson",
-            "data": "./geojson/climate.geojson"
-        },
-        "lakes" : {
-            "type": "geojson",
-            "data": "./geojson/lakes.geojson"
-        },
-        "political" : {
-            "type": "geojson",
-            "data": "./geojson/political.geojson"
-        },
-        "rivers" : {
-            "type": "geojson",
-            "data": "./geojson/rivers.geojson"
-        },
-        "icecaps":{
-            "type": "geojson",
-            "data": "./geojson/icecaps.geojson"
+        "ix-tiles": {
+            "type": "vector",
+            "url": "pmtiles://http://localhost:5173/hello/ixmaps.pmtiles"
         }
     },
     "layers": [
         {
             "id": "background",
-            "source": "background",
+            "source": "ix-tiles",
+            "source-layer": "background",
             "type": "fill",
             "paint": {
-                "fill-color": ["get", "fill"]
-        }
-    },
-                {
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
+            }
+        },
+        {
+            "id": "icecaps",
+            "source": "ix-tiles",
+            "source-layer": "icecaps",
+            "type": "fill",
+            "paint": {
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
+            }
+        },
+        {
             "id": "altitudes",
-            "source": "altitudes",
+            "source": "ix-tiles",
+            "source-layer": "altitudes",
             "type": "fill",
             "paint": {
-                "fill-color": ["get", "fill"]
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
             }
         },
         {
             "id": "climate",
-            "source": "climate",
+            "source": "ix-tiles",
+            "source-layer": "climate",
             "type": "fill",
             "paint": {
-                "fill-color": ["get", "fill"]
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
             }
         },
         {
             "id": "lakes",
-            "source": "lakes",
+            "source": "ix-tiles",
+            "source-layer": "lakes",
             "type": "fill",
             "paint": {
-                "fill-color": ["get", "fill"]
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
             }
         },
         {
             "id": "political",
-            "source": "icecaps",
+            "source": "ix-tiles",
+            "source-layer": "political",
             "type": "fill",
             "paint": {
-                "fill-color": ["get", "fill"]
+                "fill-color": [
+                    "get",
+                    "fill"
+                ]
             }
         },
         {
             "id": "rivers",
-            "source": "rivers",
+            "source": "ix-tiles",
+            "source-layer": "rivers",
             "type": "line",
             "paint": {
-                "line-color": ["get", "fill"],
+                "line-color": [
+                    "get",
+                    "fill"
+                ],
                 "line-width": 1
             }
         },
         {
             "id": "political-names",
-            "source": "political",
+            "source": "ix-tiles",
+            "source-layer": "political",
             "type": "symbol",
             "layout": {
                 "symbol-placement": "point",
-                "text-field": ["get", "id"],
-                "text-font": ["Barlow Regular"],
+                "text-field": [
+                    "get",
+                    "id"
+                ],
+                "text-font": [
+                    "Barlow Regular"
+                ],
                 "text-size": 16
             }
         }
-    
     ]
 }
