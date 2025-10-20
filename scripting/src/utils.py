@@ -2,8 +2,6 @@ import xml.etree.ElementTree as ET
 from typing import List
 from svgpathtools import parse_path
 from glob import glob
-from pathlib import Path
-import numpy as np
 import re
 from shapely.geometry import MultiPolygon, MultiLineString
 
