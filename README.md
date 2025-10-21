@@ -76,7 +76,7 @@ More on this: [Convert Bezier Curves to Lines](https://graphicdesign.stackexchan
 
 ### 6. Convert to GeoJSON
 
-Use the provided conversion scripts (in `scripting/`) to export your cleaned SVG layers into **GeoJSON** format.
+Use the provided conversion scripts (in `scripting/`) to export your cleaned SVG layers into **GeoJSON** format. See the scripting README for detailed, step-by-step instructions: `scripting/README.md`.
 Each layer will become a separate GeoJSON file.
 
 ---

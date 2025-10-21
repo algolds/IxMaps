@@ -3,8 +3,10 @@ from pathlib import Path
 from utils import get_geom_and_attributes
 from create_features import create_background, create_line, create_polygon
 
-SVG_DIR = Path('/path/to/svg/directory')
-GEOJSON_DIR = Path(__file__).parent / 'geojson'
+BASE_DIR = Path(__file__).parent.parent
+
+SVG_DIR = BASE_DIR / 'svg_files'
+GEOJSON_DIR = BASE_DIR / 'geojson'
 GEOJSON_DIR.mkdir(exist_ok=True)
 
 POLYGONS = ('altitude-layers', 'climate', 'icecaps', 'lakes', 'political')
@@ -16,14 +18,18 @@ svgs = glob(f'{SVG_DIR}/*.svg')
 has_subgrouped = ('altitude-layers',)
 paths = {}
 
-for svg in svgs:
-  stem = Path(svg).stem
-  is_subgrouped = stem in has_subgrouped
-  paths[stem] = get_geom_and_attributes(svg, is_subgrouped)
-  if stem in POLYGONS:
-    gdf = create_polygon(paths[stem])
-  elif stem in LINES:
-    gdf = create_line(paths[stem])
-  elif stem in BACKGROUND:
-    gdf = create_background(paths[stem])
-  gdf.to_file(f'{GEOJSON_DIR}/{stem}.geojson', driver='GeoJSON')
+if __name__ == '__main__':
+  for svg in svgs:
+    stem = Path(svg).stem
+    is_subgrouped = stem in has_subgrouped
+    paths[stem] = get_geom_and_attributes(svg, is_subgrouped)
+    if stem in POLYGONS:
+      print('Creating polygon for: ', stem)
+      gdf = create_polygon(paths[stem])
+    elif stem in LINES:
+      print('Creating line for: ', stem)
+      gdf = create_line(paths[stem])
+    elif stem in BACKGROUND:
+      print('Creating background')
+      gdf = create_background(paths[stem])
+    gdf.to_file(f'{GEOJSON_DIR}/{stem}.geojson', driver='GeoJSON')
